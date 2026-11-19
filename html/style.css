@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap');
+
+:root {
+    --df-black: #111111;
+    --df-white: #ffffff;
+    --df-gray-light: #f4f4f4;
+    --df-gray-border: #2a0368;
+    --df-text: #333333;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Tajawal', sans-serif; }
+
+body { background-color: var(--df-white); color: var(--df-text); }
+a { text-decoration: none; color: inherit; }
+
+/* الشريط العلوي ورأس الموقع */
+.top-bar { background-color: var(--df-gray-light); color: var(--df-black); text-align: center; padding: 10px; font-size: 0.9em; font-weight: 500; }
+.main-header { background-color: var(--df-white); border-bottom: 1px solid var(--df-gray-border); position: sticky; top: 0; z-index: 100; }
+.header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; padding: 15px 20px; }
+.logo h1 { font-size: 2.2em; font-weight: 800; letter-spacing: 2px; color: var(--df-black); }
+
+/* البحث */
+.search-bar { display: flex; flex: 1; max-width: 600px; margin: 0 40px; background: var(--df-gray-light); border-radius: 4px; overflow: hidden; }
+.search-bar input { flex: 1; padding: 12px 20px; border: none; outline: none; background: transparent; font-size: 1em; }
+.search-bar button { background: transparent; color: var(--df-black); border: none; padding: 0 20px; cursor: pointer; font-size: 1.2em; }
+
+/* الأيقونات والتنقل */
+.header-icons { display: flex; gap: 30px; }
+.icon-box { display: flex; flex-direction: column; align-items: center; cursor: pointer; color: var(--df-black); }
+.icon-box i { font-size: 1.4em; margin-bottom: 5px; }
+.main-nav { border-top: 1px solid var(--df-gray-border); }
+.main-nav ul { display: flex; justify-content: center; list-style: none; padding: 0; }
+.main-nav ul li a { display: block; padding: 15px 25px; font-size: 1.1em; font-weight: 700; color: var(--df-black); border-bottom: 3px solid transparent; transition: 0.2s; }
+.main-nav ul li a:hover, .main-nav ul li a.active { border-bottom: 3px solid var(--df-black); }
+
+/* المنتجات */
+.main-content { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+.product-card { background: var(--df-white); transition: 0.3s; padding-bottom: 15px; position: relative; }
+.product-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+.img-container { height: 380px; overflow: hidden; background: var(--df-gray-light); margin-bottom: 15px; }
+.product-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.product-card:hover img { transform: scale(1.05); }
+.product-info { padding: 0 10px; }
+.product-info h3 { font-size: 1em; font-weight: 500; color: var(--df-text); margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.price { font-size: 1.2em; font-weight: 800; color: var(--df-black); margin-bottom: 15px; }
+.size-select { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid var(--df-gray-border); outline: none; background: var(--df-white); font-weight: bold; cursor: pointer; }
+.add-to-cart { width: 100%; padding: 12px; background: var(--df-black); color: var(--df-white); border: none; font-weight: bold; font-size: 1em; cursor: pointer; transition: 0.2s; }
+.add-to-cart:hover { background: #333; }
+
+/* سلة المشتريات */
+.cart-sidebar { position: fixed; top: 0; left: -400px; width: 400px; height: 100vh; background: var(--df-white); z-index: 2000; transition: left 0.4s ease; display: flex; flex-direction: column; box-shadow: 5px 0 15px rgba(0,0,0,0.2); }
+.cart-sidebar.open { left: 0; }
+.cart-header { padding: 20px; background: var(--df-gray-light); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--df-gray-border); }
+.close-cart { font-size: 2em; cursor: pointer; }
+.cart-items { flex: 1; padding: 20px; overflow-y: auto; }
+.cart-item-row { display: flex; justify-content: space-between; border-bottom: 1px solid var(--df-gray-border); padding: 15px 0; }
+.cart-footer { padding: 20px; border-top: 1px solid var(--df-gray-border); background: var(--df-white); }
+.checkout-btn { width: 100%; padding: 15px; background: var(--df-black); color: var(--df-white); border: none; font-weight: bold; font-size: 1.2em; cursor: pointer; margin-top: 10px; }
+.overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1500; }
+
+/* النوافذ المنبثقة (Modals) */
+.modal { display: none; position: fixed; z-index: 3000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); }
+.modal-content { background-color: var(--df-white); margin: 5% auto; padding: 30px; width: 90%; max-width: 400px; text-align: center; position: relative; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+.close-btn { position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #999; transition: 0.3s; }
+.close-btn:hover { color: var(--df-black); }
+.modal-input { width: 100%; padding: 15px; margin: 10px 0; border: 1px solid var(--df-gray-border); background: var(--df-white); outline: none; border-radius: 4px; font-size: 1em; }
+.modal-input:focus { border-color: var(--df-black); }
+.modal-btn { width: 100%; padding: 15px; background: var(--df-black); color: var(--df-white); font-weight: bold; font-size: 1.1em; border: none; cursor: pointer; border-radius: 4px; transition: 0.3s; }
+.modal-btn:hover { background: #333; }
+
+/* تصميم صفحة الدفع الخاصة (MasterCard & Payment) */
+.checkout-content { max-width: 550px; text-align: right; }
+.payment-methods { display: flex; gap: 10px; margin-bottom: 20px; }
+.pay-method { flex: 1; padding: 15px 5px; border: 2px solid var(--df-gray-border); text-align: center; cursor: pointer; border-radius: 6px; transition: 0.3s; background: var(--df-gray-light); }
+.pay-method i { font-size: 1.8em; margin-bottom: 8px; color: #555; }
+.pay-method span { display: block; font-size: 0.85em; font-weight: bold; }
+.pay-method.active { border-color: var(--df-black); background: var(--df-white); }
+.pay-method.active i { color: var(--df-black); }
+
+.inline-inputs { display: flex; gap: 15px; }
+.pay-btn { background: #27ae60; margin-top: 20px; }
+.pay-btn:hover { background: #219653; }
